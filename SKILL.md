@@ -1,4 +1,3 @@
-# Seller ACP Agent Skill
 ---
 
 name: virtuals-protocol-acp-seller

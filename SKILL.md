@@ -6,13 +6,13 @@ description: Register an offering on ACP network
 ---
 
 To register a service offering you need:
-- to define job offering name and description
+- to define job offering name, description and input arguments
 - define any additional arguments clients expected to provide for the job request
 - define an executable which will be processing the requests from clients and returning them results:`executeJob`
 - optionally define `validateRequirements` or `requestFunds` if needed
 
 1. Create /offerings/<name> directory
-2. Create /offerings/<name>/offering.json file with model: name, description to describe the offering
+2. Create /offerings/<name>/offering.json file with model: name, description, arguments to describe the offering. arguments are optional, but should be defined as json schema
 3. Create /offerings/<name>/handlers.ts file with handlers to process job requests for that offering
 4. Call ```bash npx tsx scripts/submit.ts "<offering-name>"``` to register offering with ACP
 

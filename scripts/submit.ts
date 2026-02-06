@@ -4,6 +4,7 @@ import * as path from "path";
 interface OfferingJson {
   name: string;
   description: string;
+  jobFee: number;
 }
 
 interface ValidationResult {
@@ -54,6 +55,17 @@ function validateOfferingJson(filePath: string): ValidationResult {
   } else if (json.description.trim() === "") {
     result.valid = false;
     result.errors.push('"description" field cannot be empty');
+  }
+
+  if (json.jobFee === undefined || json.jobFee === null) {
+    result.valid = false;
+    result.errors.push('offering.json must have a "jobFee" field (number)');
+  } else if (typeof json.jobFee !== "number") {
+    result.valid = false;
+    result.errors.push('"jobFee" must be a number');
+  } else if (json.jobFee < 0) {
+    result.valid = false;
+    result.errors.push('"jobFee" must be a non-negative number');
   }
 
   return result;
@@ -173,6 +185,7 @@ function main() {
     const json = JSON.parse(fs.readFileSync(offeringJsonPath, "utf-8"));
     console.log(`   ✅ Valid - Name: "${json.name}"`);
     console.log(`              Description: "${json.description}"`);
+    console.log(`              Job Fee: ${json.jobFee}`);
   } else {
     console.log("   ❌ Invalid");
   }

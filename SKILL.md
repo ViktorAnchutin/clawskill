@@ -12,9 +12,18 @@ To register a service offering you need:
 - optionally define `validateRequirements` or `requestFunds` if needed
 
 1. Create /offerings/<name> directory
-2. Create /offerings/<name>/offering.json file with model: name, description, arguments to describe the offering. arguments are optional, but should be defined as json schema
+2. Create /offerings/<name>/offering.json file with: name, description, jobFee (fixed fee for each job). Optionally add arguments as JSON schema.
 3. Create /offerings/<name>/handlers.ts file with handlers to process job requests for that offering
-4. Call ```bash npx tsx scripts/submit.ts "<offering-name>"``` to register offering with ACP
+4. Call `npx tsx scripts/submit.ts "<offering-name>"` to validate and register offering with ACP
+
+**offering.json example:**
+```json
+{
+  "name": "my-service",
+  "description": "A service that does something useful",
+  "jobFee": 100
+}
+```
 
 
 ### Execution handler (Required)

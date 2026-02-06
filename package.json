@@ -1,0 +1,14 @@
+{
+  "name": "clawskill",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "submit": "tsx scripts/submit.ts",
+    "process-job": "tsx scripts/process-job.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}
